@@ -1,4 +1,6 @@
 .square {
+    max-width: 100px;
+    max-height: 100px;
     width: 100px;
     height: 100px;
     border: double;
@@ -7,15 +9,19 @@
     opacity: 1;
     font-weight: bold;
     font-size: 30px;
+    line-height: 0;
 }
 .square:hover {
     opacity: 0.6;
 }
 .board {
+    display: flex;
+    flex-wrap: wrap;
     width: 300px;
     height: 300px;
     border: 1px black;
     box-sizing: border-box;
+
 }
 .displayPlayer {
     font-weight: bold;
