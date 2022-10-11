@@ -16,6 +16,11 @@ export function MyApp() {
          setSquares([...squares]);
          setIsX(!isX);
      }
+
+     const startNewGame = () => {
+         setSquares(Array(9).fill(null));
+         setIsX(true);
+     }
      let status = '';
      if(winner) {
          status = `Player ${winner} has won`
@@ -29,6 +34,7 @@ export function MyApp() {
         <div>
             <Board squares={squares} onClick={handleClick}/>
             <div className={styles.displayPlayer}>{status}</div>
+            <button onClick={startNewGame}>New Game</button>
         </div>
     );
 }
