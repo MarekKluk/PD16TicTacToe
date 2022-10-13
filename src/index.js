@@ -1,8 +1,6 @@
 import React from 'react';
 import './index.css';
-import { MyApp } from "./MyApp";
+import { TicTacToeGame } from "./TicTacToeGame";
 import root from "react-dom";
 
-const App = () => <MyApp />;
-
-root.render(<App />, document.getElementById("root"));
+root.render(<TicTacToeGame />, document.getElementById("root"));
