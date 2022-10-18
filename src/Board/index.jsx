@@ -11,9 +11,9 @@ function uuidv4() {
 export function Board({ tiles, onBoardTileClick }) {
     return (
     <div className={styles.board}>
-        {tiles.map((tileSignValue, i) => (
-            <Tile key={uuidv4()} tileSign={tileSignValue} onBoardTileClick={() => onBoardTileClick(i)} />
-          ))}
+        {tiles.map((row, rowIndex) => row.map((tileSignValue, columnIndex) =>(
+            <Tile key={uuidv4()} tileSign={tileSignValue} onBoardTileClick={() => onBoardTileClick(rowIndex, columnIndex)} />
+          )))}
     </div>
     )
 }

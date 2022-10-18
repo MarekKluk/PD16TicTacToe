@@ -6,6 +6,7 @@ import root from "react-dom";
 root.render(<TicTacToeGame />, document.getElementById("root"));
 
 function checkForWinner (squaresArray) {
+    const flattedSquaresArray = squaresArray.flat()
     const winningMatrix = [
         [0,1,2],
         [3,4,5],
@@ -18,30 +19,30 @@ function checkForWinner (squaresArray) {
     ]
     for(let i=0; i<winningMatrix.length; i++) {
         const [a, b, c] = winningMatrix[i];
-        if(squaresArray[a] && squaresArray[a] === squaresArray[b] && squaresArray[a] === squaresArray[c]){
-            return squaresArray[a];
+        if(flattedSquaresArray[a] && flattedSquaresArray[a] === flattedSquaresArray[b] && flattedSquaresArray[a] === flattedSquaresArray[c]){
+            return flattedSquaresArray[a];
         }
     };
     return null;
 }
 
 export function TicTacToeGame() {
-    const [tiles, setTiles] = useState(Array(9).fill(null))
-    const [isX, setIsX] = useState(true)
+    const [tiles, setTiles] = useState(Array(3).fill(null).map(()=>Array(3).fill(null)))
+    const [isX, setIsX] = useState(true);
     const winner = checkForWinner(tiles);
-    const status = winner? `Player ${winner} has won` : `Current player: ${isX? 'X' : 'O'}`
+    const status = winner? `Player ${winner} has won` : `Current player: ${isX? 'X' : 'O'}`;
 
-    const addNewSignToTheBoardTile = (i) => {
-        if(winner || tiles[i]) {
+    const addNewSignToTheBoardTile = (i, j) => {
+        if(winner || tiles[i][j]) {
          return;
         }
-        tiles[i] = isX? 'X' : 'O'
+        tiles[i][j] = isX? 'X' : 'O';
         setTiles([...tiles]);
         setIsX(!isX);
     }
 
     const startNewGame = () => {
-        setTiles(Array(9).fill(null));
+        setTiles(Array(3).fill(null).map(()=>Array(3).fill(null)));
         setIsX(true);
     }
 
